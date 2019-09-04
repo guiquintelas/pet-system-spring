@@ -11,15 +11,19 @@
             </tr>
         </thead>
         <tbody>
-            <c:forEach items="${pets}" var="pets">
+            <c:forEach items="${models}" var="model">
                 <tr>
-                    <th scope="row">${pets.getId()}</th>
-                    <td>${pets.getNome()}</td>
-                    <td>${pets.getRaca()}</td>
+                    <th scope="row">${model.getId()}</th>
+                    <td>${model.getNome()}</td>
+                    <td>${model.getRaca()}</td>
                     <td>
-                        <a class="btn btn-light"
-                           href="/pets/${pets.getId()}"
+                        <a class="btn btn-outline-secondary"
+                           href="/pets/${model.getId()}"
                         >editar</a>
+
+                        <a class="btn btn-outline-danger"
+                           href="/pets/${model.getId()}/deletar"
+                        >deletar</a>
                     </td>
                 </tr>
             </c:forEach>
