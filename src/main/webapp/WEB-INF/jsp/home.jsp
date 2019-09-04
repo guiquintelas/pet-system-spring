@@ -2,6 +2,6 @@
 <%@taglib uri="http://www.springframework.org/tags/form" prefix="form" %>
 <jsp:include page="header.jsp"/>
 
-<a href="pets/petLista.jsp">Produtos</a>
+<a href="pets">Pets</a>
 
 <jsp:include page="footer.jsp"/>

@@ -14,7 +14,9 @@
 <body>
     <div class="container-fluid p-5">
         <div class="row">
-            <h2>${page}</h2>
+            <a href="">
+                <h2>${page}</h2>
+            </a>
         </div>
         <br>
 
@@ -23,6 +25,14 @@
                 ${msg}
             </div>
         </c:if>
+
+        <c:if test="${page != 'Home' && inserindoText == null && editandoText == null}">
+            <a class="btn btn-primary btn-lg mb-3 text-white" href="/${pagePath}/inserir">
+                Adicionar
+            </a>
+        </c:if>
+
+
 
 
 
