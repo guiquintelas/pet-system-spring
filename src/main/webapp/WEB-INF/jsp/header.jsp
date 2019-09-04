@@ -28,7 +28,11 @@
                 </li>
 
                 <li class="nav-item ${page == 'Cupom de Descontos' ? 'active' : '' }">
-                <a class="nav-link" href="/cupom-descontos">Cupom de Descontos</a>
+                    <a class="nav-link" href="/cupom-descontos">Cupom de Descontos</a>
+                </li>
+
+                <li class="nav-item ${page == 'Vacinas' ? 'active' : '' }">
+                    <a class="nav-link" href="/vacinas">Vacinas</a>
                 </li>
             </ul>
         </div>
