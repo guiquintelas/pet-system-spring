@@ -6,6 +6,8 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import self.quintelas.main.model.Pet;
 
 import java.util.List;
@@ -65,26 +67,26 @@ public abstract class BaseController<ModelType> {
     }
 
     @RequestMapping(value = "inserir", method = RequestMethod.POST)
-    public String insert(@ModelAttribute() ModelType entity, Model model) {
+    public String insert(@ModelAttribute() ModelType entity, Model model, RedirectAttributes redir) {
         repository.save(entity);
 
-        model.addAttribute("msg", "Inserido com sucesso!");
-        return index(model);
+        redir.addFlashAttribute("msg", "Inserido com sucesso!");
+        return "redirect:/" + pagePath;
     }
 
     @RequestMapping(value = "editar", method = RequestMethod.POST)
-    public String update(@ModelAttribute() ModelType entity, Model model) {
+    public String update(@ModelAttribute() ModelType entity, RedirectAttributes redir) {
         repository.save(entity);
 
-        model.addAttribute("msg", "Editado com sucesso!");
-        return index(model);
+        redir.addFlashAttribute("msg", "Editado com sucesso!");
+        return "redirect:/" + pagePath;
     }
 
     @RequestMapping("{id}/deletar")
-    public String delete(@PathVariable int id, Model model) {
+    public String delete(@PathVariable int id, Model model, RedirectAttributes redir) {
         repository.deleteById(id);
 
-        model.addAttribute("msg", "Deletado com sucesso!");
-        return index(model);
+        redir.addFlashAttribute("msg", "Deletado com sucesso!");
+        return "redirect:/" + pagePath;
     }
 }
