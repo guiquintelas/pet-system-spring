@@ -12,15 +12,35 @@
     <title>${page}</title>
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <a class="navbar-brand" href="">PetSystem</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarNav">
+            <ul class="navbar-nav">
+                <li class="nav-item ${page == 'Home' ? 'active' : '' }">
+                    <a class="nav-link" href="/">Home</a>
+                </li>
+
+                <li class="nav-item ${page == 'Pets' ? 'active' : '' }">
+                    <a class="nav-link" href="/pets">Pets</a>
+                </li>
+
+                <li class="nav-item ${page == 'Cupom de Descontos' ? 'active' : '' }">
+                <a class="nav-link" href="/cupom-descontos">Cupom de Descontos</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
     <div class="container-fluid p-5">
         <div class="row">
-            <a href="">
-                <h2>${page}</h2>
-            </a>
+            <h3>${page}</h3>
         </div>
         <br>
 
-        <c:if test="${msg != null}">
+        <c:if test="${msg != null && msg != ''}">
             <div class="alert alert-success" role="alert">
                 ${msg}
             </div>
