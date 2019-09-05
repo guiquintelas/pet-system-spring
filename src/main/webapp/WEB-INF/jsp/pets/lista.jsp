@@ -7,6 +7,7 @@
                 <th scope="col">ID</th>
                 <th scope="col">Nome</th>
                 <th scope="col">Raca</th>
+                <th scope="col">Cupom de Desconto</th>
                 <th scope="col"></th>
             </tr>
         </thead>
@@ -16,6 +17,18 @@
                     <th scope="row">${model.getId()}</th>
                     <td>${model.getNome()}</td>
                     <td>${model.getRaca()}</td>
+
+                    <td>
+                        <c:if test="${model.getCupomDesconto() != null}">
+                            <a href="/cupom-descontos/${model.getCupomDesconto().id}">
+                                ${model.getCupomDesconto().codigo}
+                            </a>
+                        </c:if>
+                        <c:if test="${model.getCupomDesconto() == null}">
+                            Sem Cupom
+                        </c:if>
+                    </td>
+
                     <td>
                         <a class="btn btn-outline-secondary"
                            href="/pets/${model.getId()}"
