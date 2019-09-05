@@ -49,6 +49,10 @@
                 <li class="nav-item ${page == 'Vacinas' ? 'active' : '' }">
                     <a class="nav-link" href="/vacinas">Vacinas</a>
                 </li>
+
+                <li class="nav-item ${page == 'Tosas' ? 'active' : '' }">
+                    <a class="nav-link" href="/tosas">Tosas</a>
+                </li>
             </ul>
         </div>
     </nav>
