@@ -21,7 +21,7 @@
                     <td>
                         <c:if test="${model.getCupomDesconto() != null}">
                             <a href="/cupom-descontos/${model.getCupomDesconto().id}">
-                                ${model.getCupomDesconto().codigo}
+                                ${model.getCupomDesconto().codigo} (${model.getCupomDesconto().desconto}%)
                             </a>
                         </c:if>
                         <c:if test="${model.getCupomDesconto() == null}">
