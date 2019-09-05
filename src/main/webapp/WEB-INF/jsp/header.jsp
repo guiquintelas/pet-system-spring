@@ -10,14 +10,29 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"/>
     <title>${page}</title>
+
+    <style>
+        .navbar-expand-lg .navbar-collapse {
+            display: -ms-flexbox!important;
+            display: flex!important;
+            -ms-flex-preferred-size: auto;
+            flex-basis: auto;
+        }
+        .navbar-nav {
+            -ms-flex-direction: row;
+            flex-direction: row;
+        }
+        .navbar-nav .nav-link {
+            padding-right: .5rem;
+            padding-left: .5rem;
+        }
+    </style>
 </head>
 <body>
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <a class="navbar-brand" href="">PetSystem</a>
-        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
-            <span class="navbar-toggler-icon"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
+
+        <div class="navbar-collapse show" id="navbarNav">
             <ul class="navbar-nav">
                 <li class="nav-item ${page == 'Home' ? 'active' : '' }">
                     <a class="nav-link" href="/">Home</a>
