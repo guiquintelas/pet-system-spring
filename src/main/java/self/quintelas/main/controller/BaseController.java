@@ -29,6 +29,10 @@ public abstract class BaseController<ModelType> {
     public abstract String getInserindoText();
     public abstract ModelType getModelInstance();
 
+    public void injectTemplateAttr(Model model) {
+
+    }
+
     @RequestMapping("")
     public String index(Model model) {
         List<ModelType> models = repository.findAll();
@@ -42,18 +46,20 @@ public abstract class BaseController<ModelType> {
 
     @RequestMapping("{id}")
     public String show(@PathVariable int id, Model model) {
-        Optional<ModelType> pet = repository.findById(id);
+        Optional<ModelType> optEntity = repository.findById(id);
 
-        if (!pet.isPresent()) {
+        if (!optEntity.isPresent()) {
             return "home";
         }
 
-        ModelType petModel = pet.get();
+        injectTemplateAttr(model);
+
+        ModelType entity = optEntity.get();
 
         model.addAttribute("page", pageName);
         model.addAttribute("pagePath", pagePath);
-        model.addAttribute("model", petModel);
-        model.addAttribute("editandoText", getEditandoText(petModel));
+        model.addAttribute("model", entity);
+        model.addAttribute("editandoText", getEditandoText(entity));
         return "form";
     }
 
@@ -67,7 +73,7 @@ public abstract class BaseController<ModelType> {
     }
 
     @RequestMapping(value = "inserir", method = RequestMethod.POST)
-    public String insert(@ModelAttribute() ModelType entity, Model model, RedirectAttributes redir) {
+    public String insert(@ModelAttribute() ModelType entity, RedirectAttributes redir) {
         repository.save(entity);
 
         redir.addFlashAttribute("msg", "Inserido com sucesso!");
