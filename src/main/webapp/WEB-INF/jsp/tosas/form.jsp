@@ -11,6 +11,6 @@
 </div>
 
 <div class="form-group">
-    <label for="comBanho">Com banho</label>
-    <form:input path="comBanho" cssClass="form-control"/>
+    <label>Com banho</label>
+    <form:checkbox path="comBanho" cssClass="form-control" />
 </div>
