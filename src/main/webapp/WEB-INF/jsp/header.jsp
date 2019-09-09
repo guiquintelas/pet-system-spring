@@ -53,6 +53,10 @@
                 <li class="nav-item ${page == 'Tosas' ? 'active' : '' }">
                     <a class="nav-link" href="/tosas">Tosas</a>
                 </li>
+
+                <li class="nav-item ${page == 'Consultas' ? 'active' : '' }">
+                    <a class="nav-link" href="/consultas">Consultas</a>
+                </li>
             </ul>
         </div>
     </nav>
