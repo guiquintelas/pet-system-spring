@@ -26,6 +26,10 @@
             padding-right: .5rem;
             padding-left: .5rem;
         }
+
+        input[type='checkbox'] {
+            width: 30px;
+        }
     </style>
 </head>
 <body>
