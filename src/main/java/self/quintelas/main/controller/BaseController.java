@@ -65,6 +65,8 @@ public abstract class BaseController<ModelType> {
 
     @RequestMapping("/inserir")
     public String showInsert(Model model) {
+        injectTemplateAttr(model);
+
         model.addAttribute("page", pageName);
         model.addAttribute("pagePath", pagePath);
         model.addAttribute("model", getModelInstance());
