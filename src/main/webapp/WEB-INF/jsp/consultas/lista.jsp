@@ -7,6 +7,7 @@
                 <th scope="col">ID</th>
                 <th scope="col">Nome</th>
                 <th scope="col">Preco</th>
+                <th scope="col">Vacinas</th>
                 <th scope="col"></th>
             </tr>
         </thead>
@@ -16,6 +17,21 @@
                     <th scope="row">${model.getId()}</th>
                     <td>${model.getNome()}</td>
                     <td>R$ ${model.getPreco()}</td>
+
+                    <td>
+                        <c:forEach items="${model.getVacinas()}" var="vacina" varStatus="loop">
+                            <a href="/vacinas/${vacina.getId()}">
+                                ${vacina.getNome()}
+                            </a>
+
+                            <c:if test="${!loop.last}">,</c:if>
+                        </c:forEach>
+
+                        <c:if test="${model.getVacinas().size() == 0}">
+                            Sem vacinas
+                        </c:if>
+                    </td>
+
                     <td>
                         <a class="btn btn-outline-secondary"
                            href="/${pagePath}/${model.getId()}"

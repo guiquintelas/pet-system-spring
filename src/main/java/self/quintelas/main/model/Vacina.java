@@ -1,9 +1,6 @@
 package self.quintelas.main.model;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
 public class Vacina {
@@ -12,6 +9,10 @@ public class Vacina {
     private int id;
     private String nome;
     private Double preco;
+
+    @ManyToOne
+    @JoinColumn
+    private Consulta consulta;
 
     public int getId() {
         return id;
@@ -35,5 +36,13 @@ public class Vacina {
 
     public void setPreco(Double preco) {
         this.preco = preco;
+    }
+
+    public Consulta getConsulta() {
+        return consulta;
+    }
+
+    public void setConsulta(Consulta consulta) {
+        this.consulta = consulta;
     }
 }

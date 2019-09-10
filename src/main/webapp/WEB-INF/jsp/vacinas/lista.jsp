@@ -7,6 +7,7 @@
                 <th scope="col">ID</th>
                 <th scope="col">Nome</th>
                 <th scope="col">Preco</th>
+                <th scope="col">Consulta</th>
                 <th scope="col"></th>
             </tr>
         </thead>
@@ -16,6 +17,18 @@
                     <th scope="row">${model.getId()}</th>
                     <td>${model.getNome()}</td>
                     <td>R$ ${model.getPreco()}</td>
+
+                    <td>
+                        <c:if test="${model.getConsulta() != null}">
+                            <a href="/consultas/${model.getConsulta().id}">
+                                ${model.getConsulta().nome} (R$ ${model.getConsulta().preco})
+                            </a>
+                        </c:if>
+                        <c:if test="${model.getConsulta() == null}">
+                            Sem Consulta
+                        </c:if>
+                    </td>
+                    
                     <td>
                         <a class="btn btn-outline-secondary"
                            href="/${pagePath}/${model.getId()}"
