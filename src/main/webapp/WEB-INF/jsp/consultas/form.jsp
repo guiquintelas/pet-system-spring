@@ -9,3 +9,16 @@
     <label for="preco">Preco</label>
     <form:input path="preco" cssClass="form-control"/>
 </div>
+
+<div class="form-group">
+    <label for="pet">Pet</label>
+    <form:select path="pet">
+        <form:option value="" label="Escolher o Pet"/>
+
+        <form:options
+                items="${pets}"
+                itemValue="id"
+                itemLabel="nome"
+        />
+    </form:select>
+</div>

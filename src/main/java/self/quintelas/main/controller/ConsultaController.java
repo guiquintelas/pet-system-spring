@@ -1,16 +1,20 @@
 package self.quintelas.main.controller;
 
-import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 import self.quintelas.main.model.Consulta;
 import self.quintelas.main.repository.ConsultaRepository;
+import self.quintelas.main.repository.PetRepository;
 
 @Controller
 @RequestMapping("/consultas")
 public class ConsultaController extends BaseController<Consulta> {
-    public ConsultaController(ConsultaRepository repository) {
+    private PetRepository petRepository;
+
+    public ConsultaController(ConsultaRepository repository, PetRepository petRepository) {
         super("consultas", "Consulta", repository);
+        this.petRepository = petRepository;
     }
 
     @Override
@@ -26,5 +30,10 @@ public class ConsultaController extends BaseController<Consulta> {
     @Override
     public Consulta getModelInstance() {
         return new Consulta();
+    }
+
+    @Override
+    public void injectTemplateAttr(Model model) {
+        model.addAttribute("pets", petRepository.findAll());
     }
 }

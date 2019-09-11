@@ -8,6 +8,7 @@
                 <th scope="col">Nome</th>
                 <th scope="col">Preco</th>
                 <th scope="col">Vacinas</th>
+                <th scope="col">Pet</th>
                 <th scope="col"></th>
             </tr>
         </thead>
@@ -29,6 +30,17 @@
 
                         <c:if test="${model.getVacinas().size() == 0}">
                             Sem vacinas
+                        </c:if>
+                    </td>
+
+                    <td>
+                        <c:if test="${model.getPet() != null}">
+                            <a href="/pets/${model.getPet().id}">
+                                    ${model.getPet().nome}
+                            </a>
+                        </c:if>
+                        <c:if test="${model.getPet() == null}">
+                            Sem pet
                         </c:if>
                     </td>
 

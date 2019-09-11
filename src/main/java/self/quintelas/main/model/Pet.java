@@ -1,6 +1,7 @@
 package self.quintelas.main.model;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 public class Pet {
@@ -11,6 +12,9 @@ public class Pet {
     private String nome;
     private String raca;
     @ManyToOne() CupomDesconto cupomDesconto;
+
+    @OneToMany(mappedBy = "pet", cascade = CascadeType.ALL)
+    private Set<Consulta> consultas;
 
     public int getId() {
         return id;
@@ -42,5 +46,13 @@ public class Pet {
 
     public void setCupomDesconto(CupomDesconto cupomDesconto) {
         this.cupomDesconto = cupomDesconto;
+    }
+
+    public Set<Consulta> getConsultas() {
+        return consultas;
+    }
+
+    public void setConsultas(Set<Consulta> consultas) {
+        this.consultas = consultas;
     }
 }
