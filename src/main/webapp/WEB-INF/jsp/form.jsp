@@ -14,6 +14,7 @@
         action="${inserindoText == null ? 'editar' : ''}"
         method="post"
         modelAttribute="model"
+        cssClass="form-inline"
 >
     <form:hidden path="id" cssClass="form-control"/>
 

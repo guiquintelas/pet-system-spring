@@ -13,7 +13,7 @@
 
 <div class="form-group">
     <label for="cupomDesconto">Cupom Desconto</label>
-    <form:select path="cupomDesconto">
+    <form:select path="cupomDesconto" cssClass="custom-select">
         <form:option value="" label="Escolher Cupom de Desconto"/>
 
         <form:options

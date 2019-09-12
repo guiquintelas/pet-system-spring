@@ -30,6 +30,20 @@
         input[type='checkbox'] {
             width: 30px;
         }
+
+        .form-inline {
+            align-items: flex-end;
+        }
+
+        .form-inline .form-group {
+            flex-direction: column;
+            align-items: start;
+        }
+
+        .form-group {
+            margin-right: 15px;
+        }
+
     </style>
 </head>
 <body>

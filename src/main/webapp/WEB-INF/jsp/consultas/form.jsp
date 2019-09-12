@@ -12,7 +12,7 @@
 
 <div class="form-group">
     <label for="pet">Pet</label>
-    <form:select path="pet">
+    <form:select path="pet" cssClass="custom-select">
         <form:option value="" label="Escolher o Pet"/>
 
         <form:options

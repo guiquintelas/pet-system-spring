@@ -12,7 +12,7 @@
 
 <div class="form-group">
     <label for="consulta">Consulta</label>
-    <form:select path="consulta">
+    <form:select path="consulta" cssClass="custom-select">
         <form:option value="" label="Escolher a Consulta"/>
 
         <form:options
