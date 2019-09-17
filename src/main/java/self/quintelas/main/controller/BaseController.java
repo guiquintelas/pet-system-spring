@@ -10,6 +10,8 @@ import org.springframework.web.servlet.ModelAndView;
 import org.springframework.web.servlet.mvc.support.RedirectAttributes;
 import self.quintelas.main.model.Pet;
 
+import javax.servlet.http.HttpSession;
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -34,18 +36,15 @@ public abstract class BaseController<ModelType> {
     }
 
     @RequestMapping("")
-    public String index(Model model) {
+    public String index(Model model, HttpSession httpSession) {
         List<ModelType> models = repository.findAll();
 
-        model.addAttribute("page", pageName);
-        model.addAttribute("pagePath", pagePath);
-        model.addAttribute("models", models);
-
+        addPageInfo(model, httpSession);
         return pagePath + "/lista";
     }
 
     @RequestMapping("{id}")
-    public String show(@PathVariable int id, Model model) {
+    public String show(@PathVariable int id, Model model, HttpSession httpSession) {
         Optional<ModelType> optEntity = repository.findById(id);
 
         if (!optEntity.isPresent()) {
@@ -56,20 +55,16 @@ public abstract class BaseController<ModelType> {
 
         ModelType entity = optEntity.get();
 
-        model.addAttribute("page", pageName);
-        model.addAttribute("pagePath", pagePath);
-        model.addAttribute("model", entity);
+        addPageInfo(model, httpSession);
         model.addAttribute("editandoText", getEditandoText(entity));
         return "form";
     }
 
     @RequestMapping("/inserir")
-    public String showInsert(Model model) {
+    public String showInsert(Model model, HttpSession httpSession) {
         injectTemplateAttr(model);
 
-        model.addAttribute("page", pageName);
-        model.addAttribute("pagePath", pagePath);
-        model.addAttribute("model", getModelInstance());
+        addPageInfo(model, httpSession);
         model.addAttribute("inserindoText", getInserindoText());
         return "form";
     }
@@ -96,5 +91,36 @@ public abstract class BaseController<ModelType> {
 
         redir.addFlashAttribute("msg", "Deletado com sucesso!");
         return "redirect:/" + pagePath;
+    }
+
+    private void addPageInfo(Model model, HttpSession httpSession) {
+        model.addAttribute("history", getHistory(httpSession));
+        model.addAttribute("page", pageName);
+        model.addAttribute("pagePath", pagePath);
+        model.addAttribute("model", getModelInstance());
+    }
+
+    private List<String> getHistory(HttpSession httpSession) {
+        Object preHistory = httpSession.getAttribute("history");
+
+        ArrayList<String> history;
+
+        if (preHistory instanceof ArrayList) {
+            history = (ArrayList<String>) preHistory;
+        } else {
+            history = new ArrayList<>();
+        }
+
+        if (history.isEmpty() || history.get(history.size() - 1) != this.pageName) {
+            history.add(pageName);
+        }
+
+        while (history.size() > 5) {
+            history.remove(0);
+        }
+
+        httpSession.setAttribute("history", history);
+
+        return history;
     }
 }

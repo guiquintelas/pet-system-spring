@@ -1,6 +1,8 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--@elvariable id="page" type="java.lang.String"--%>
 <%--@elvariable id="msg" type="java.lang.String"--%>
+<%--@elvariable id="history" type="java.lang.String"--%>
+
 <!doctype html>
 <html lang="en">
 <head>
@@ -83,6 +85,20 @@
         <div class="row">
             <h3>${page}</h3>
         </div>
+
+
+        <c:if test="${history != null && history != ''}">
+            <div class="row" style="display: flex; align-items: baseline;">
+                <b style="margin-right: 10px">Ultimas paginas acessadas:</b>
+                <div style="font-size: 12px">
+                    <c:forEach items="${history}" var="item" varStatus="loop">
+                        ${item}
+
+                        <c:if test="${!loop.last}"> > </c:if>
+                    </c:forEach>
+                </div>
+            </div>
+        </c:if>
         <br>
 
         <c:if test="${msg != null && msg != ''}">
