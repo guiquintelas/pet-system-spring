@@ -46,6 +46,10 @@
             margin-right: 15px;
         }
 
+        .alert {
+            width: fit-content;
+        }
+
     </style>
 </head>
 <body>
