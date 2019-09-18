@@ -39,6 +39,7 @@ public abstract class BaseController<ModelType> {
     public String index(Model model, HttpSession httpSession) {
         List<ModelType> models = repository.findAll();
 
+        model.addAttribute("models", models);
         addPageInfo(model, httpSession);
         return pagePath + "/lista";
     }
@@ -56,6 +57,7 @@ public abstract class BaseController<ModelType> {
         ModelType entity = optEntity.get();
 
         addPageInfo(model, httpSession);
+        model.addAttribute("model", entity);
         model.addAttribute("editandoText", getEditandoText(entity));
         return "form";
     }
@@ -65,6 +67,7 @@ public abstract class BaseController<ModelType> {
         injectTemplateAttr(model);
 
         addPageInfo(model, httpSession);
+        model.addAttribute("model", getModelInstance());
         model.addAttribute("inserindoText", getInserindoText());
         return "form";
     }
@@ -97,7 +100,6 @@ public abstract class BaseController<ModelType> {
         model.addAttribute("history", getHistory(httpSession));
         model.addAttribute("page", pageName);
         model.addAttribute("pagePath", pagePath);
-        model.addAttribute("model", getModelInstance());
     }
 
     private List<String> getHistory(HttpSession httpSession) {
