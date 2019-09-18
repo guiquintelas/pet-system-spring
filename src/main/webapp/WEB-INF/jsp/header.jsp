@@ -62,6 +62,14 @@
                     <a class="nav-link" href="/">Home</a>
                 </li>
 
+                <li class="nav-item ${page == 'Usuarios' ? 'active' : '' }">
+                    <a class="nav-link" href="/usuarios">Usuarios</a>
+                </li>
+
+                <li class="nav-item ${page == 'Consultas' ? 'active' : '' }">
+                    <a class="nav-link" href="/consultas">Consultas</a>
+                </li>
+
                 <li class="nav-item ${page == 'Pets' ? 'active' : '' }">
                     <a class="nav-link" href="/pets">Pets</a>
                 </li>
@@ -78,9 +86,7 @@
                     <a class="nav-link" href="/tosas">Tosas</a>
                 </li>
 
-                <li class="nav-item ${page == 'Consultas' ? 'active' : '' }">
-                    <a class="nav-link" href="/consultas">Consultas</a>
-                </li>
+
             </ul>
         </div>
     </nav>
