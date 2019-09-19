@@ -85,21 +85,18 @@
                 <li class="nav-item ${page == 'Tosas' ? 'active' : '' }">
                     <a class="nav-link" href="/tosas">Tosas</a>
                 </li>
-
-
             </ul>
+
+            <div style="margin: auto 10px auto auto;">
+                <a href="/logout">Sair</a>
+            </div>
         </div>
     </nav>
 
-    <div class="container-fluid p-5">
-        <div class="row">
-            <h3>${page}</h3>
-        </div>
-
-
+    <div class="container-fluid p-5" style="padding-top: 12px !important;">
         <c:if test="${history != null && history != ''}">
             <div class="row" style="display: flex; align-items: baseline;">
-                <b style="margin-right: 10px">Ultimas paginas acessadas:</b>
+                <b style="margin-right: 10px; font-size: 13px">Ultimas paginas acessadas:</b>
                 <div style="font-size: 12px">
                     <c:forEach items="${history}" var="item" varStatus="loop">
                         ${item}
@@ -107,8 +104,15 @@
                         <c:if test="${!loop.last}"> > </c:if>
                     </c:forEach>
                 </div>
+
+                <div style="margin-left: auto">Ola, ${usuario}!</div>
             </div>
         </c:if>
+
+        <div class="row" style="margin-top: 25px">
+            <h3>${page}</h3>
+        </div>
+
         <br>
 
         <c:if test="${msg != null && msg != ''}">
