@@ -45,4 +45,12 @@ public class Vacina {
     public void setConsulta(Consulta consulta) {
         this.consulta = consulta;
     }
+
+    @Override
+    public String toString() {
+        return ";Id;" + getId() +
+                ";Nome;" + getNome()+
+                ";Preco;" + getPreco()+
+                ";Consulta;" + getConsulta().getNome();
+    }
 }

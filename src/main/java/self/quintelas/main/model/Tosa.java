@@ -13,4 +13,12 @@ public class Tosa extends Servico {
     public void setComBanho(boolean comBanho) {
         this.comBanho = comBanho;
     }
+
+    @Override
+    public String toString() {
+        return ";Id;" + getId() +
+                ";Nome;" + getNome()+
+                ";Preco;" + getPreco() +
+                ";Com Banho?;" + isComBanho();
+    }
 }

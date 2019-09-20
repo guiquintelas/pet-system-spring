@@ -26,4 +26,11 @@ public class Consulta extends Servico {
     public void setPet(Pet pet) {
         this.pet = pet;
     }
+
+    @Override
+    public String toString() {
+        return ";Id;" + getId() +
+                ";Nome;" + getNome()+
+                ";Preco;" + getPreco();
+    }
 }

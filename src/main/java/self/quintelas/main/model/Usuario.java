@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import java.util.HashMap;
 
 @Entity
 public class Usuario {
@@ -44,5 +45,13 @@ public class Usuario {
 
     public void setSenha(String senha) {
         this.senha = senha;
+    }
+
+    @Override
+    public String toString() {
+        return ";Id;" + id +
+                ";Nome;" + nome +
+                ";Email;" + email +
+                ";Senha;" + senha;
     }
 }

@@ -12,6 +12,7 @@ import self.quintelas.main.model.Pet;
 
 import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Optional;
 
@@ -77,6 +78,7 @@ public abstract class BaseController<ModelType> {
         repository.save(entity);
 
         redir.addFlashAttribute("msg", "Inserido com sucesso!");
+        redir.addFlashAttribute("finalizaCampos", parseFinalizaCampos(entity.toString()));
         return "redirect:/" + pagePath;
     }
 
@@ -85,6 +87,7 @@ public abstract class BaseController<ModelType> {
         repository.save(entity);
 
         redir.addFlashAttribute("msg", "Editado com sucesso!");
+        redir.addFlashAttribute("finalizaCampos", parseFinalizaCampos(entity.toString()));
         return "redirect:/" + pagePath;
     }
 
@@ -124,5 +127,31 @@ public abstract class BaseController<ModelType> {
         httpSession.setAttribute("history", history);
 
         return history;
+    }
+
+    private HashMap<String, String> parseFinalizaCampos(String finalizaCampos) {
+        HashMap<String, String> result = new HashMap<>();
+
+        String[] camposValores = finalizaCampos.split(";");
+
+        String proxCampo = null;
+        String proxValor;
+
+        for (String campoValor: camposValores) {
+            if (campoValor == null || campoValor.equals(""))
+                continue;
+
+            if (proxCampo == null) {
+                proxCampo = campoValor;
+                continue;
+            }
+
+            proxValor = campoValor;
+
+            result.put(proxCampo, proxValor);
+            proxCampo = null;
+        }
+
+        return result;
     }
 }

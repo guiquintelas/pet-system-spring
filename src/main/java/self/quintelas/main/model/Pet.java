@@ -55,4 +55,16 @@ public class Pet {
     public void setConsultas(Set<Consulta> consultas) {
         this.consultas = consultas;
     }
+
+    @Override
+    public String toString() {
+        CupomDesconto cupomDesconto = getCupomDesconto();
+
+        String codigo = (cupomDesconto != null) ? cupomDesconto.getCodigo() : "nenhum";
+
+        return ";Id;" + getId() +
+                ";Nome;" + getNome()+
+                ";Raca;" + raca +
+                ";Cupom de Desconto;" + codigo;
+    }
 }

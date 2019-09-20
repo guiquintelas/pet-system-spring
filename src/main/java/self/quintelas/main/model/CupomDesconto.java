@@ -36,4 +36,11 @@ public class CupomDesconto {
     public void setDesconto(float desconto) {
         this.desconto = desconto;
     }
+
+    @Override
+    public String toString() {
+        return ";Id;" + getId() +
+                ";Codigo;" + codigo+
+                ";Desconto;" + desconto;
+    }
 }

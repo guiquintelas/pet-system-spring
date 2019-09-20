@@ -118,7 +118,7 @@
 
         <c:if test="${msg != null && msg != ''}">
             <div class="alert alert-success" role="alert">
-                ${msg}
+                <c:import url="../finaliza.jsp"/>
             </div>
         </c:if>
 
