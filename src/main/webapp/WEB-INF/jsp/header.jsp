@@ -44,6 +44,7 @@
 
         .form-group {
             margin-right: 15px;
+            margin-bottom: 20px !important;
         }
 
         .alert {
