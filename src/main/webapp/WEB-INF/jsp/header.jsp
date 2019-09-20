@@ -47,6 +47,10 @@
             margin-bottom: 20px !important;
         }
 
+        button {
+            margin-bottom: 20px !important;
+        }
+
         .alert {
             width: fit-content;
         }
