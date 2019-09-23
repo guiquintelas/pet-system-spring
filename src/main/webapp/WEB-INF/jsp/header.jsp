@@ -116,6 +116,14 @@
 
         <div class="row" style="margin-top: 25px">
             <h3>${page}</h3>
+
+            <c:if test="${editandoText != null || inserindoText != null}">
+                <div style="display: contents">
+                    <a href="/${pagePath}" class="btn btn-light" style="margin-left: auto">
+                        Voltar
+                    </a>
+                </div>
+            </c:if>
         </div>
 
         <br>
