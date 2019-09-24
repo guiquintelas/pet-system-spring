@@ -1,5 +1,7 @@
 package self.quintelas.main.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 import java.util.Set;
 
@@ -8,6 +10,7 @@ public class Consulta extends Servico {
     @OneToMany(mappedBy = "consulta", cascade = CascadeType.ALL)
     private Set<Vacina> vacinas;
 
+    @JsonIgnore
     @ManyToOne
     private Pet pet;
 

@@ -1,5 +1,7 @@
 package self.quintelas.main.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
 import javax.persistence.*;
 
 @Entity
@@ -10,6 +12,7 @@ public class Vacina {
     private String nome;
     private Double preco;
 
+    @JsonIgnore
     @ManyToOne
     @JoinColumn
     private Consulta consulta;
