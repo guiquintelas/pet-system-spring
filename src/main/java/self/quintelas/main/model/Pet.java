@@ -16,17 +16,6 @@ public class Pet {
     @OneToMany(mappedBy = "pet", cascade = CascadeType.ALL)
     private Set<Consulta> consultas;
 
-    @OneToMany(mappedBy = "pet", cascade = CascadeType.ALL)
-    private Set<Tosa> tosas;
-
-    public Set<Tosa> getTosas() {
-        return tosas;
-    }
-
-    public void setTosas(Set<Tosa> tosas) {
-        this.tosas = tosas;
-    }
-
     public int getId() {
         return id;
     }

@@ -7,8 +7,6 @@ import javax.persistence.ManyToOne;
 public class Tosa extends Servico {
     private boolean comBanho;
 
-    @ManyToOne
-    private Pet pet;
 
     public boolean isComBanho() {
         return comBanho;
@@ -16,14 +14,6 @@ public class Tosa extends Servico {
 
     public void setComBanho(boolean comBanho) {
         this.comBanho = comBanho;
-    }
-
-    public Pet getPet() {
-        return pet;
-    }
-
-    public void setPet(Pet pet) {
-        this.pet = pet;
     }
 
     @Override
