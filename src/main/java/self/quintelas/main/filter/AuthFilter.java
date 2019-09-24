@@ -19,7 +19,9 @@ public class AuthFilter implements Filter {
         HttpServletRequest request = (HttpServletRequest) servletRequest;
         HttpServletResponse response = (HttpServletResponse) servletResponse;
 
-        if (request.getSession().getAttribute("usuario") == null && !request.getRequestURI().equals("/login")) {
+        if (request.getSession().getAttribute("usuario") == null
+                && !request.getRequestURI().equals("/login")
+                && !request.getRequestURI().contains("/api")) {
             response.sendRedirect("login");
         }
 
